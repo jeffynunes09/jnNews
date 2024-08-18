@@ -1,3 +1,21 @@
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import logo from "../../images/logo.png";
+import {
+  ErrorSpan,
+  ImageLogo,
+  InputSpace,
+  Nav,
+  UserLoggedSpace,
+} from "./NavbarStyled";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../Button/Button";
+import { searchSchema } from "../../schemas/searchSchema";
+import { userLogged } from "../../services/userServices";
+import { useContext, useEffect } from "react";
+import Cookies from "js-cookie";
+import { UserContext } from "../../Context/UserContext";
+
 export function Navbar() {
   const {
     register,
