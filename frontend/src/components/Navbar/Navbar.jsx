@@ -27,7 +27,7 @@ export function Navbar() {
   });
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
-  user = false
+  setUser(undefined)
   function onSearch(data) {
     const { title } = data;
     navigate(`/search/${title}`);
@@ -52,7 +52,7 @@ export function Navbar() {
 
   function signout() {
     Cookies.remove("token");
-    setUser(!user);
+    setUser(undefined);
     navigate("/");
   }
 
