@@ -3,25 +3,25 @@ import Cookies from "js-cookie";
 
 const baseURL = "https://jnnews.onrender.com";
 
-export function signup(data) {
+export  async function signup(data) {
   delete data.confirmPassword;
-  const body = {
+  const body = await {
     ...data,
     username: generateUserName(data.name),
     avatar: "https://i.imgur.com/xmI2QAo.jpg",
     background: "https://i.imgur.com/XbRg9D7.png",
   };
-  const response = axios.post(`${baseURL}/user/create`, body);
+  const response = await axios.post(`${baseURL}/user/create`, body);
   return response;
 }
 
-export function signin(data) {
-  const response = axios.post(`${baseURL}/auth/login`, data);
+export   async function signin(data) {
+  const response = await axios.post(`${baseURL}/auth/login`, data);
   return response;
 }
 
-export function userLogged() {
-  const response = axios.get(`${baseURL}/user/findById`, {
+export   async function userLogged() {
+  const response =await axios.get(`${baseURL}/user/findById`, {
     headers: {
       Authorization: `Bearer ${Cookies.get("token")}`,
     }
@@ -29,8 +29,8 @@ export function userLogged() {
   return response;
 }
 
-function generateUserName(name) {
-  const nameLowerCaseWithoutSpaces = name.replace(/\s/g, "").toLowerCase();
+async function   generateUserName(name) {
+  const nameLowerCaseWithoutSpaces = await name.replace(/\s/g, "").toLowerCase();
   const randomNumber = Math.floor(Math.random() * 1000);
   return `${nameLowerCaseWithoutSpaces}-${randomNumber}`;
 }

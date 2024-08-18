@@ -3,23 +3,23 @@ import Cookies from "js-cookie";
 
 const baseURL = "https://jnnews.onrender.com";
 
-export function getAllPosts() {
-  const response = axios.get(`${baseURL}/posts`);
+export async function getAllPosts() {
+  const response = await axios.get(`${baseURL}/posts`);
   return response;
 }
 
-export function getTopPost() {
-  const response = axios.get(`${baseURL}/posts/top`);
+export async function getTopPost() {
+  const response = await axios.get(`${baseURL}/posts/top`);
   return response;
 }
 
-export function searchPosts(title) {
-  const response = axios.get(`${baseURL}/posts/search?title=${title}`);
+export async function searchPosts(title) {
+  const response = await axios.get(`${baseURL}/posts/search?title=${title}`);
   return response;
 }
 
-export function getAllPostsByUser() {
-  const response = axios.get(`${baseURL}/posts/byUserId`, {
+export async function getAllPostsByUser() {
+  const response = await axios.get(`${baseURL}/posts/byUserId`, {
     headers: {
       Authorization: `Bearer ${Cookies.get("token")}`,
     },
@@ -27,8 +27,8 @@ export function getAllPostsByUser() {
   return response;
 }
 
-export function createNews(body) {
-  const response = axios.post(`${baseURL}/posts/create`, body, {
+export async function createNews(body) {
+  const response = await axios.post(`${baseURL}/posts/create`, body, {
     headers: {
       Authorization: `Bearer ${Cookies.get("token")}`,
     },
@@ -36,8 +36,8 @@ export function createNews(body) {
   return response;
 }
 
-export function getNewsById(id) {
-  const response = axios.get(`${baseURL}/posts/byIdPost/${id}`, {
+export async function getNewsById(id) {
+  const response = await axios.get(`${baseURL}/posts/byIdPost/${id}`, {
     headers: {
       Authorization: `Bearer ${Cookies.get("token")}`,
     },
@@ -45,8 +45,8 @@ export function getNewsById(id) {
   return response;
 }
 
-export function editNews(body, id) {
-  const response = axios.patch(`${baseURL}/posts/update/${id}`, body, {
+export async function editNews(body, id) {
+  const response = await axios.patch(`${baseURL}/posts/update/${id}`, body, {
     headers: {
       Authorization: `Bearer ${Cookies.get("token")}`,
     },
@@ -54,8 +54,8 @@ export function editNews(body, id) {
   return response;
 }
 
-export function deleteNews (id) {
-  const response = axios.delete(`${baseURL}/posts/delete/${id}`, {
+export async function deleteNews(id) {
+  const response = await axios.delete(`${baseURL}/posts/delete/${id}`, {
     headers: {
       Authorization: `Bearer ${Cookies.get("token")}`,
     },
