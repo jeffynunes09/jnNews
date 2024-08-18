@@ -1,21 +1,3 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import logo from "../../images/logo.png";
-import {
-  ErrorSpan,
-  ImageLogo,
-  InputSpace,
-  Nav,
-  UserLoggedSpace,
-} from "./NavbarStyled";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../Button/Button";
-import { searchSchema } from "../../schemas/searchSchema";
-import { userLogged } from "../../services/userServices";
-import { useContext, useEffect } from "react";
-import Cookies from "js-cookie";
-import { UserContext } from "../../Context/UserContext";
-
 export function Navbar() {
   const {
     register,
@@ -33,6 +15,7 @@ export function Navbar() {
     navigate(`/search/${title}`);
     reset();
   }
+
   async function findUserLogged() {
     try {
       const response = await userLogged();
@@ -49,7 +32,9 @@ export function Navbar() {
   }
 
   useEffect(() => {
-    if (Cookies.get("token")) findUserLogged();
+    if (Cookies.get("token")) {
+      findUserLogged();
+    }
   }, []);
 
   return (
@@ -75,7 +60,7 @@ export function Navbar() {
 
         {user ? (
           <UserLoggedSpace>
-            <Link to="/profile"  style={{textDecoration: 'none'}}>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
               <h2>{user.name}</h2>
             </Link>
 
@@ -83,9 +68,7 @@ export function Navbar() {
           </UserLoggedSpace>
         ) : (
           <Link to="/auth">
-            <Button type="button" text="Entrar">
-              Entrar
-            </Button>
+            <Button type="button" text="Entrar" />
           </Link>
         )}
       </Nav>
@@ -94,3 +77,4 @@ export function Navbar() {
     </>
   );
 }
+
