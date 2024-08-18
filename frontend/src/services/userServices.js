@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const baseURL = "https://course-mern-thicode.onrender.com";
+const baseURL = "https://jnnews.onrender.com";
 
 export function signup(data) {
   delete data.confirmPassword;
