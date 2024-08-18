@@ -27,7 +27,7 @@ export function Navbar() {
   });
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
-
+  user = false
   function onSearch(data) {
     const { title } = data;
     navigate(`/search/${title}`);
