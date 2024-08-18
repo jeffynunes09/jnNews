@@ -43,17 +43,19 @@ export function Navbar() {
     }
   }
 
-  function signout() {
-    Cookies.remove("token");
-    setUser(!user);
-    navigate("/");
-  }
 
   useEffect(() => {
     if (Cookies.get("token")) {
       findUserLogged();
     }
   }, []);
+
+  function signout() {
+    Cookies.remove("token");
+    setUser(!user);
+    navigate("/");
+  }
+
 
   return (
     <>
