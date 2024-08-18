@@ -76,7 +76,7 @@ export function Navbar() {
           <ImageLogo src={logo} alt="Logo do Breaking News" />
         </Link>
 
-        {user ? (
+        {!user ? (
           <UserLoggedSpace>
             <Link to="/profile" style={{ textDecoration: "none" }}>
               <h2>{user.name}</h2>
