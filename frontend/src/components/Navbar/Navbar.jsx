@@ -76,7 +76,11 @@ export function Navbar() {
           <ImageLogo src={logo} alt="Logo do Breaking News" />
         </Link>
 
-        {user ? (
+        {!user ? (
+          <Link to="/auth">
+            <Button type="button" text="Entrar" />
+          </Link>
+        ) : (
           <UserLoggedSpace>
             <Link to="/profile" style={{ textDecoration: "none" }}>
               <h2>{user.name}</h2>
@@ -84,10 +88,6 @@ export function Navbar() {
 
             <i className="bi bi-box-arrow-right" onClick={signout}></i>
           </UserLoggedSpace>
-        ) : (
-          <Link to="/auth">
-            <Button type="button" text="Entrar" />
-          </Link>
         )}
       </Nav>
       {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
