@@ -45,7 +45,7 @@ export function Navbar() {
 
   function signout() {
     Cookies.remove("token");
-    setUser(undefined);
+    setUser(!user);
     navigate("/");
   }
 
